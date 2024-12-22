@@ -7,6 +7,10 @@ const NavLists = ( { activeList, setActiveList, lists } ) => {
     
   }
 
+  const handleAddList = () => {
+    
+  }
+
   
   return (
     <div className="select-active-list">
@@ -24,6 +28,7 @@ const NavLists = ( { activeList, setActiveList, lists } ) => {
         <div className="add-button">
           <FaPlusSquare 
               role="button"
+              onClick={handleAddList}
           />
         </div>
       </div>
