@@ -47,11 +47,15 @@ const NewItem = ({ activeList, setActiveList }) => {
                 onChange={(e)=>setNewBody(e.target.value)}
                 placeholder="Add new to-do task"
             />
-            <input 
-                type="date"
-                value={newDate}
-                onChange={(e)=>setNewDate(e.target.value)}
-            />
+            <div>
+                <label> Due date: 
+                </label>
+                <input 
+                    type="date"
+                    value={newDate}
+                    onChange={(e)=>setNewDate(e.target.value)}
+                />
+            </div>
             <div className="add-button">
                 <FaPlusSquare 
                     role="button"
