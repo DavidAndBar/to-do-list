@@ -101,17 +101,35 @@ main {
 form {
   display: flex;
   height: 48px;
+  justify-content: center;
+  margin-top: 0.6rem;
   width: 100%;
 }
 
-form > :where(input, div) {
+form > :where(input, .due-date) {
   height: 70%;
-  margin: auto;
-  width: calc( 45% - 24px );
+  margin: auto 0;
+  width: calc( 40% - 24px );
 }
 
 form > .add-button {
   width: 48px;
+}
+
+form > .due-date {
+  display: flex;
+  align-items: center;
+}
+
+.due-date > :where(label, input) {
+  align-content: center;
+  text-align: right;
+  width: 35%;
+  height: 100%;
+}
+
+.due-date > input {
+  width: 60%;
 }
 
 /* List of tasks */
@@ -119,8 +137,9 @@ form > .add-button {
 section {
   border-top: solid black 1px;
   height: calc(100vh - 1.5rem*4 - 48px*2 - 10px);
-  margin: 1.5rem auto;
+  margin: 0 auto;
   overflow: auto;
+  padding-top: 0.6rem;
   width: 50%;
 }
 
@@ -177,8 +196,13 @@ article > p {
 /* General */
 
 /* -Icons- */
-:where(.add-button, .delete-button, .edit-button) > svg{
+:where(.delete-button, .edit-button) > svg{
   height: 48px;
+  width: 48px;
+}
+
+.add-button > svg {
+  height: 100%;
   width: 48px;
 }
 

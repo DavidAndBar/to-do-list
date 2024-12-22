@@ -20,7 +20,7 @@ const NavLists = ( { activeList, setActiveList, lists } ) => {
         </select>
       </div>
       <div>
-        <p><b>Add list: </b></p>
+        <p><b>Add list</b></p>
         <div className="add-button">
           <FaPlusSquare 
               role="button"

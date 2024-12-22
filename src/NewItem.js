@@ -47,7 +47,7 @@ const NewItem = ({ activeList, setActiveList }) => {
                 onChange={(e)=>setNewBody(e.target.value)}
                 placeholder="Add new to-do task"
             />
-            <div>
+            <div className="due-date">
                 <label> Due date: 
                 </label>
                 <input 
