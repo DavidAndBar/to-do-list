@@ -154,67 +154,18 @@
       "id": "list3",
       "list": [
         {
-          "id": 21,
-          "name": "Task 21",
-          "completed": true,
-          "dueDate": "2024-12-08"
-        },
-        {
-          "id": 22,
-          "name": "Task 22",
-          "completed": false,
-          "dueDate": null
-        },
-        {
-          "id": 23,
-          "name": "Task 23",
-          "completed": true,
-          "dueDate": "2024-12-12"
-        },
-        {
-          "id": 24,
-          "name": "Task 24",
-          "completed": false,
-          "dueDate": null
-        },
-        {
-          "id": 25,
-          "name": "Task 25",
-          "completed": true,
-          "dueDate": "2024-12-18"
-        },
-        {
-          "id": 26,
-          "name": "Task 26",
-          "completed": false,
-          "dueDate": null
-        },
-        {
-          "id": 27,
-          "name": "Task 27",
-          "completed": true,
-          "dueDate": "2024-11-20"
-        },
-        {
-          "id": 28,
-          "name": "Task 28",
-          "completed": false,
-          "dueDate": null
-        },
-        {
-          "id": 29,
-          "name": "Task 29",
-          "completed": true,
-          "dueDate": "2024-12-03"
-        },
-        {
-          "id": 30,
-          "name": "Task 30",
+          "id": 1,
+          "name": "New task",
           "completed": false,
           "dueDate": null
         }
       ],
       "title": "List 3"
+    },
+    {
+      "id": "list4",
+      "list": [],
+      "title": "Grocery List"
     }
   ],
   "testLists": [

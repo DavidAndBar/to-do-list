@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import Nav from './Nav';
 import MainContent from './MainContent';
+import { Routes, Route } from 'react-router-dom'
+import CreateNewList from "./CreateNewList";
 import apiRequest from './apiRequest';
 
 function App() {
@@ -8,14 +10,16 @@ function App() {
   const [lists, setLists] = useState('');
   const [activeList, setActiveList] = useState('')
 
+  const fetchLists = async () => {
+    const response = await fetch(URL);
+    const listsRetrieved = await response.json();
+    setLists(listsRetrieved);
+    setActiveList(listsRetrieved[0])
+    return listsRetrieved;
+  }
+
 /* Fetch the initial data */
   useEffect(()=>{
-    const fetchLists = async () => {
-      const response = await fetch(URL);
-      const listsRetrieved = await response.json();
-      setLists(listsRetrieved);
-      setActiveList(listsRetrieved[0])
-    }
     fetchLists()
   },[])
 
@@ -45,11 +49,13 @@ function App() {
     }
   },[activeList] )
 
-  
   return (
     <div className="App">
       <Nav activeList={activeList} setActiveList={setActiveList} lists={lists}/>
-      <MainContent activeList={activeList} setActiveList={setActiveList}/>
+      <Routes>
+        <Route exact path="/" element={<MainContent activeList={activeList} setActiveList={setActiveList}/>}></Route>
+        <Route exact path="/newList" element={<CreateNewList url={URL} fetchLists={fetchLists} setActiveList={setActiveList}/>}></Route>
+      </Routes>
     </div>
   );
 }

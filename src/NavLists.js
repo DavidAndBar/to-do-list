@@ -1,4 +1,5 @@
 import { FaPlusSquare } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const NavLists = ( { activeList, setActiveList, lists } ) => {
   const handleChangeList = (e) => {
@@ -26,10 +27,12 @@ const NavLists = ( { activeList, setActiveList, lists } ) => {
       <div>
         <p><b>Add list</b></p>
         <div className="add-button">
-          <FaPlusSquare 
-              role="button"
-              onClick={handleAddList}
-          />
+          <Link to="newList">
+            <FaPlusSquare 
+                role="button"
+                onClick={handleAddList}
+            />
+          </Link>
         </div>
       </div>
     </div>
