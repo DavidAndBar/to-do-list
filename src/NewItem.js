@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { FaPlusSquare } from 'react-icons/fa'
 
-const NewItem = ({ activeList, setActiveList }) => {
+const NewItem = ({ activeList, setActiveList, search, setSearch }) => {
     const EMPTYITEM = {"id": "", "name": "", "completed": false, "dueDate": null};
     const [newBody, setNewBody] = useState("") 
     const [newDate, setNewDate] = useState("")
@@ -41,25 +41,32 @@ const NewItem = ({ activeList, setActiveList }) => {
     
     return (
         <form onSubmit={(e)=>{e.preventDefault();pushItem()}}>
-            <input 
-                type="text"
-                value={newBody}
-                onChange={(e)=>setNewBody(e.target.value)}
-                placeholder="Add new to-do task"
-            />
-            <div className="due-date">
-                <label> Due date: 
-                </label>
+            <div>
+                <input 
+                    type="text"
+                    onChange={(e)=>setNewBody(e.target.value)}
+                    placeholder="Add new to-do task"
+                    value={newBody}
+                />
+                <label> Due date: </label>
                 <input 
                     type="date"
                     value={newDate}
                     onChange={(e)=>setNewDate(e.target.value)}
                 />
+                <div className="add-button">
+                    <FaPlusSquare 
+                        role="button"
+                        onClick={pushItem}
+                    />
+                </div>
             </div>
-            <div className="add-button">
-                <FaPlusSquare 
-                    role="button"
-                    onClick={pushItem}
+            <div className="search-item">
+                <input 
+                    type="text"
+                    onChange={(e)=>setSearch(e.target.value)}
+                    placeholder="Search item"
+                    value={search}
                 />
             </div>
         </form>

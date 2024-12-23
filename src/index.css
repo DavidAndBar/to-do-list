@@ -106,17 +106,50 @@ form {
   width: 100%;
 }
 
-form > :where(input, .due-date) {
+form > div:first-child{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+}
+
+form > div:first-child > input {
+  margin-right: 1rem;
+}
+
+form > div:last-child{
+  width: 40%;
+}
+
+form input {
+  height: 70%;
+}
+
+.search-item {
+  display: flex;
+  align-items: center;
+}
+
+.search-item > input {
+  width: 70%;
+}
+
+/*form > :where(div, .due-date) {
   height: 70%;
   margin: auto 0;
-  width: calc( 40% - 24px );
+  width: calc( 50% - 24px );
+}
+
+form > div > input {
+  height: 100%;
+  margin-right: 1rem;
 }
 
 form > .add-button {
   width: 48px;
 }
 
-form > .due-date {
+form >  div {
   display: flex;
   align-items: center;
 }
@@ -131,7 +164,7 @@ form > .due-date {
 .due-date > input {
   width: 60%;
 }
-
+*/
 /* List of tasks */
 
 section {
