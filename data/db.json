@@ -18,7 +18,7 @@
         {
           "id": 3,
           "name": "Task 3",
-          "completed": false,
+          "completed": true,
           "dueDate": "2024-12-02"
         },
         {
@@ -30,7 +30,7 @@
         {
           "id": 7,
           "name": "Task 7",
-          "completed": false,
+          "completed": true,
           "dueDate": "2024-11-28"
         },
         {
@@ -72,12 +72,6 @@
         {
           "id": 13,
           "name": "whatever",
-          "completed": false,
-          "dueDate": null
-        },
-        {
-          "id": 6,
-          "name": "This is a full task, a lot of text",
           "completed": false,
           "dueDate": null
         }

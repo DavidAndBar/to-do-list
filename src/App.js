@@ -4,6 +4,8 @@ import MainContent from './MainContent';
 import { Routes, Route } from 'react-router-dom'
 import CreateNewList from "./CreateNewList";
 import apiRequest from './apiRequest';
+import Options from './Options';
+
 
 function App() {
   const URL = "http://localhost:3500/davidLists";
@@ -55,6 +57,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<MainContent activeList={activeList} setActiveList={setActiveList}/>}></Route>
         <Route exact path="/newList" element={<CreateNewList url={URL} fetchLists={fetchLists} setActiveList={setActiveList}/>}></Route>
+        <Route exact path="/options" element={<Options activeList={activeList} setActiveList={setActiveList} lists={lists}/>}></Route>
       </Routes>
     </div>
   );

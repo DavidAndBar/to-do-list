@@ -53,6 +53,14 @@ nav > div{
   display: flex;
 }
 
+.opts-wrapper{
+  display: none;
+}
+
+.dropdown-content {
+  display: none;
+}
+
 nav > div:first-child{
   padding-right: 1rem;
   width: 35%;
@@ -85,6 +93,26 @@ nav > div:last-child{
   flex-grow: 1;
 }
 
+.list-settings > a > button {
+  background-color: var(--icon-color);
+  color: #e5e7f3;
+  border-color: #b2b8dc;
+}
+
+.list-settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-settings > a {
+  width: 100%;
+}
+
+.list-settings > a > button {
+  width: 80%;
+}
+
 #listTitle {
   align-content: center;
   align-items: center;
@@ -96,6 +124,7 @@ nav > div:last-child{
 
 /* Main content */
 main {
+  border-top: black solid 3px;
   display: flex;
   flex-wrap: wrap;
   height: calc(100vh - 1.5rem*2 - 48px - 10px*2);
@@ -115,15 +144,15 @@ form > div:first-child{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60%;
+  width: 70%;
 }
 
 form > div:first-child > input {
-  margin-right: 1rem;
+  margin-right: 0.5rem;
 }
 
 form > div:last-child{
-  width: 40%;
+  width: 30%;
 }
 
 form input {
@@ -136,10 +165,16 @@ form input {
 }
 
 .search-item > input {
-  width: 70%;
+  width: 100%;
 }
 
 /* List of tasks */
+
+#tasks-wrap{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
 
 section {
   border-top: solid black 1px;
@@ -175,7 +210,7 @@ article {
   justify-content: space-evenly;
   margin: 1rem auto;
   height: 96px;
-  width: 80%;
+  width: 90%;
 }
 
 article:last-child {
@@ -252,10 +287,26 @@ main > .new-list {
   border-color: #f51457;
 }
 
+/* Options menu */
+
+.options-menu {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+}
+
+.options-menu > div {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+}
+
 /* General */
 
 /* -Icons- */
-:where(.delete-button, .edit-button) > svg{
+:where(.delete-button, .edit-button, .opts-wrapper > a) > svg{
   height: 48px;
   width: 48px;
 }
@@ -280,4 +331,35 @@ main > .new-list {
 svg {
   color: var(--icon-color);;
   cursor: grab;
+}
+
+
+/* Responsive design */
+
+@media screen and (max-width:855px){
+  /* nav */
+  .select-active-list > .list-settings {
+    display: none!important;
+  }
+
+  .opts-wrapper{
+    display: block;
+  }
+
+  /* List of tasks */
+  #tasks-wrap {
+    height: calc(100vh - 1.5rem*4 - 48px*2 - 10px);
+    overflow: auto;
+  }
+  
+  #tasks-wrap > section:first-child {
+    margin-bottom: 1.5rem;
+  }
+  
+  section {
+    overflow: none;
+    height: auto;
+    width: 100%;
+  }
+  
 }

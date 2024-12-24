@@ -9,8 +9,11 @@ const ShowLists = ({ activeList, setActiveList }) => {
   return (
     <>
         {activeList ? <><NewItem activeList={activeList} setActiveList={setActiveList} search={search} setSearch={setSearch}/>
-                        <TasksList activeList={activeList} setActiveList={setActiveList} columnCompleted={false} search={search}/>
-                        <TasksList activeList={activeList} setActiveList={setActiveList} columnCompleted={true} search={search}/></> 
+                        <div id="tasks-wrap">
+                          <TasksList activeList={activeList} setActiveList={setActiveList} columnCompleted={false} search={search}/>
+                          <TasksList activeList={activeList} setActiveList={setActiveList} columnCompleted={true} search={search}/>
+                        </div>
+                      </> 
                     : <></>}
     </>
   )
