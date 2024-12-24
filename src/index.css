@@ -72,12 +72,12 @@ nav > div{
 
 nav > div:first-child{
   padding-right: 1rem;
-  width: 35%;
+  width: 30%;
 }
 
 nav > div:last-child{
   padding-left: 1rem;
-  width: 35%;
+  width: 30%;
 }
 
 .select-active-list {
