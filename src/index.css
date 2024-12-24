@@ -1,9 +1,10 @@
 :root {
   --icon-color: #7f89c5;
+  --font-color: #192b97;
 }
 
 body {
-  color: #192b97;
+  color: var(--font-color);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -18,6 +19,14 @@ code {
 }
 
 /* --------------- Custom Styles --------------------*/
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--font-color);
+}
 
 * {
   box-sizing: border-box;
@@ -53,7 +62,7 @@ nav > div{
   display: flex;
 }
 
-.opts-wrapper{
+.opts-wrapper, .add-items-wrapper{
   display: none;
 }
 
@@ -144,15 +153,15 @@ form > div:first-child{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70%;
+  width: 80%;
 }
 
-form > div:first-child > input {
+form > div:first-child > :where(input, label)  {
   margin-right: 0.5rem;
 }
 
 form > div:last-child{
-  width: 30%;
+  width: 20%;
 }
 
 form input {
@@ -303,10 +312,30 @@ main > .new-list {
   justify-content: center;
 }
 
+/* Create new item page */
+
+.create-new-item-expanded {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.create-new-item-expanded > .create-new-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-new-item > .add-button {
+  justify-content: center;
+  display: flex;
+}
+
 /* General */
 
 /* -Icons- */
-:where(.delete-button, .edit-button, .opts-wrapper > a) > svg{
+:where(.delete-button, .edit-button, .opts-wrapper > a, .add-items-wrapper > a) > svg{
   height: 48px;
   width: 48px;
 }
@@ -361,5 +390,21 @@ svg {
     height: auto;
     width: 100%;
   }
-  
+}
+
+@media screen and (max-width:700px){
+  /* nav */
+  main > form > .create-new-item {
+    display: none!important;
+  }
+
+  .add-items-wrapper{
+    display: block;
+  }
+
+  .search-item {
+    margin-left: 2rem;
+    width: 40%!important;
+  }
+
 }

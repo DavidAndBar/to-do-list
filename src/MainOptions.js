@@ -1,7 +1,7 @@
 import SelectActiveList from "./SelectActiveList"
 import AddNewListBtn from "./AddNewListBtn"
 
-const Options = ({ activeList, setActiveList, lists }) => {
+const MainOptions = ({ activeList, setActiveList, lists }) => {
   return (
     <main>
         <div className="options-menu">
@@ -15,4 +15,4 @@ const Options = ({ activeList, setActiveList, lists }) => {
   )
 }
 
-export default Options
+export default MainOptions

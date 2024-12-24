@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import NavLists from "./NavLists";
 import UserProfile from "./UserProfile";
 
@@ -7,7 +8,7 @@ const Nav = ({ activeList, setActiveList, lists }) => {
         <NavLists activeList={activeList} setActiveList={setActiveList} lists={lists}/>
         <hr/>
         <h1 id="listTitle">
-            {activeList.title}
+            <Link to="/">{activeList.title}</Link>
         </h1>
         <hr/>
         <UserProfile />

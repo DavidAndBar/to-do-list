@@ -3,7 +3,7 @@ import { useState } from "react"
 import apiRequest from "./apiRequest"
 import { useNavigate } from "react-router-dom";
 
-const CreateNewList = ({ url, fetchLists, setActiveList }) => {
+const MainCreateNewList = ({ url, fetchLists, setActiveList }) => {
     const [ listName, setListName ] = useState('')
     
     const navigate = useNavigate();
@@ -66,4 +66,4 @@ const CreateNewList = ({ url, fetchLists, setActiveList }) => {
     )
 }
 
-export default CreateNewList
+export default MainCreateNewList

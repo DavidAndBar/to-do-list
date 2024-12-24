@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import Nav from './Nav';
 import MainContent from './MainContent';
 import { Routes, Route } from 'react-router-dom'
-import CreateNewList from "./CreateNewList";
+import MainCreateNewList from "./MainCreateNewList";
 import apiRequest from './apiRequest';
-import Options from './Options';
-
+import MainOptions from './MainOptions';
+import MainCreateNewItem from './MainCreateNewItem';
 
 function App() {
   const URL = "http://localhost:3500/davidLists";
@@ -56,8 +56,9 @@ function App() {
       <Nav activeList={activeList} setActiveList={setActiveList} lists={lists}/>
       <Routes>
         <Route exact path="/" element={<MainContent activeList={activeList} setActiveList={setActiveList}/>}></Route>
-        <Route exact path="/newList" element={<CreateNewList url={URL} fetchLists={fetchLists} setActiveList={setActiveList}/>}></Route>
-        <Route exact path="/options" element={<Options activeList={activeList} setActiveList={setActiveList} lists={lists}/>}></Route>
+        <Route exact path="/newList" element={<MainCreateNewList url={URL} fetchLists={fetchLists} setActiveList={setActiveList}/>}></Route>
+        <Route exact path="/options" element={<MainOptions activeList={activeList} setActiveList={setActiveList} lists={lists}/>}></Route>
+        <Route exact path="/createNewItem" element={<MainCreateNewItem activeList={activeList} setActiveList={setActiveList}/> }></Route>
       </Routes>
     </div>
   );
