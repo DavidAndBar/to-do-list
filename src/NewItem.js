@@ -5,7 +5,7 @@ import { FaPlusSquare } from "react-icons/fa";
 const NewItem = ({ activeList, setActiveList, search, setSearch }) => {
         
     return (
-        <form onSubmit={(e)=>{e.preventDefault()}}>
+        <form className="new-task-div" onSubmit={(e)=>{e.preventDefault()}}>
             <CreateNewItem activeList={activeList} setActiveList={setActiveList} />
             <div className="add-items-wrapper">
                 <Link to="/createNewItem">

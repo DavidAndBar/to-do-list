@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useState } from "react"
-import apiRequest from "./apiRequest"
+import apiRequest from "./functions/apiRequest"
 import { useNavigate } from "react-router-dom";
 
 const MainCreateNewList = ({ url, fetchLists, setActiveList }) => {
@@ -39,7 +39,7 @@ const MainCreateNewList = ({ url, fetchLists, setActiveList }) => {
                 },
                 body: JSON.stringify(newList)
             }
-            const result = await apiRequest(url, postOptions);
+            await apiRequest(url, postOptions);
             
             setActiveList(newList)
             setListName('')

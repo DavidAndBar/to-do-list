@@ -3,6 +3,10 @@
   --font-color: #192b97;
 }
 
+html {
+  background-color: #e5e7f3;
+}
+
 body {
   color: var(--font-color);
   margin: 0;
@@ -43,7 +47,7 @@ a:visited {
   height: calc(100vh - 1.5rem*2);
   margin: 1.5rem auto;
   max-width: 1200px;
-  min-width: 380px;
+  min-width: 350px;
   padding: 10px 5%;
   width: 80%;
 }
@@ -131,6 +135,18 @@ nav > div:last-child{
   flex-grow: 1;
 }
 
+/* Profile and sign in and sign up */
+
+.user-profile {
+  justify-content: center;
+}
+
+.user-profile > p {
+  align-items: center;
+  display: flex;
+  margin-left: 1rem;
+}
+
 /* Main content */
 main {
   border-top: black solid 3px;
@@ -141,7 +157,7 @@ main {
 
 /* New task */
 
-form {
+.new-task-div {
   display: flex;
   height: 48px;
   justify-content: center;
@@ -149,22 +165,22 @@ form {
   width: 100%;
 }
 
-form > div:first-child{
+.new-task-div > div:first-child{
   display: flex;
   align-items: center;
   justify-content: center;
   width: 80%;
 }
 
-form > div:first-child > :where(input, label)  {
+.new-task-div > div:first-child > :where(input, label)  {
   margin-right: 0.5rem;
 }
 
-form > div:last-child{
+.new-task-div > div:last-child{
   width: 20%;
 }
 
-form input {
+.new-task-div input {
   height: 70%;
 }
 
@@ -332,10 +348,42 @@ main > .new-list {
   display: flex;
 }
 
+/* Login page*/
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.form-content > * {
+  text-align: center;
+}
+
+.forms {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.forms > input {
+  width: 40%;
+  min-width: 200px;
+  height: 35px;
+  margin-bottom: 0.5rem;
+}
+
+.forms > button {
+  width: 20%;
+  height: 30px;
+}
+
 /* General */
 
 /* -Icons- */
-:where(.delete-button, .edit-button, .opts-wrapper > a, .add-items-wrapper > a) > svg{
+:where(.delete-button, .edit-button, .opts-wrapper > a, .add-items-wrapper > a, .profile-icon > a) > svg{
   height: 48px;
   width: 48px;
 }
@@ -407,4 +455,11 @@ svg {
     width: 40%!important;
   }
 
+  .profile-mobile {
+    display: none;
+  }
+
+  .user-profile > p {
+    margin: 0;
+  }
 }
