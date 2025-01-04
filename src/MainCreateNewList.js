@@ -3,14 +3,14 @@ import { useState } from "react"
 import apiRequest from "./functions/apiRequest"
 import { useNavigate } from "react-router-dom";
 
-const MainCreateNewList = ({ url, fetchLists, setActiveList }) => {
+const MainCreateNewList = ({ url, lists, setActiveList }) => {
     const [ listName, setListName ] = useState('')
     
     const navigate = useNavigate();
 
     const handleAddList = async () => {
-        if (!!listName) {
-            const listsNow = await fetchLists();
+        if (!!listName) {            
+            const listsNow = lists;
             /* Checks what id's are taken */
             const usedListIds = listsNow.map( (element) => {
                 return element.id;
@@ -39,6 +39,7 @@ const MainCreateNewList = ({ url, fetchLists, setActiveList }) => {
                 },
                 body: JSON.stringify(newList)
             }
+
             await apiRequest(url, postOptions);
             
             setActiveList(newList)

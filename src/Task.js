@@ -1,6 +1,11 @@
 import { FaTrashAlt, FaEdit } from 'react-icons/fa'
+import { useState } from 'react';
 
 const Task = ({ activeList, setActiveList, item, columnCompleted }) => {
+  const [editActive, setEditActive] = useState(false);
+  const [newDesc, setNewDesc] = useState('');
+  
+  
   const updateChecked = (e) =>{
     const newActiveList = { ...activeList };
     const itemIndex = newActiveList["list"].indexOf(item);
@@ -15,6 +20,23 @@ const Task = ({ activeList, setActiveList, item, columnCompleted }) => {
     
   }
 
+  const handleEdit = () => {
+    setEditActive(!editActive)
+    if (!editActive) {
+      setNewDesc(item.name)
+    } else{
+      const newActiveList = { ...activeList };
+      const itemIndex = newActiveList["list"].indexOf(item);
+      newActiveList["list"][itemIndex].name = newDesc;
+      setActiveList(newActiveList)
+    } 
+  }
+
+  const handleEnter = (e)=> {
+    if(e.key === "Enter"){
+      handleEdit();
+    }
+  }
   return (
     <article>
       <div>
@@ -24,12 +46,18 @@ const Task = ({ activeList, setActiveList, item, columnCompleted }) => {
           onChange={updateChecked}
         />
       </div>
-      <p style={{textDecorationLine: `${item.completed ? "line-through" : "none" }`}}>
-        {item.name}
-        {item.date ? <span> - {item.date}</span> : <></>}
-      </p>
+      {editActive ? <><input 
+                          type="text"
+                          value={newDesc}
+                          onChange={(e)=>setNewDesc(e.target.value)}
+                          onKeyDown={handleEnter}
+                        /></> : 
+                    <p style={{textDecorationLine: `${item.completed ? "line-through" : "none" }`}}>
+                      {item.name}
+                      {item.dueDate ? <span> - {item.dueDate}</span> : <></>}
+                    </p>}
       <div className="edit-button">
-        {!!!columnCompleted && <FaEdit role='button'/>}
+        {!!!columnCompleted && <FaEdit role='button' onClick={handleEdit}/>}
       </div>
       <div className="delete-button">
         <FaTrashAlt 

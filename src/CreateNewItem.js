@@ -8,11 +8,9 @@ const CreateNewItem = ( { activeList, setActiveList } ) => {
     const [newDate, setNewDate] = useState("");
     const navigate = useNavigate();
 
-
     const pushItem = () => {
-        if (!!newBody.trim()) {
+        if (!!newBody.trim() && activeList) {
             const newItem = { ...EMPTYITEM };
-            
             /* Checks what id's are taken */
             const usedIds = activeList["list"].map( (element) => {
                 return element.id;
@@ -42,7 +40,13 @@ const CreateNewItem = ( { activeList, setActiveList } ) => {
             navigate('/')
         }
     }
-  
+    
+    const handleEnter = (e)=> {
+        if(e.key === "Enter"){
+          pushItem();
+        }
+    }
+    
     return (
     <div className="create-new-item">
                 <input 
@@ -50,12 +54,14 @@ const CreateNewItem = ( { activeList, setActiveList } ) => {
                     onChange={(e)=>setNewBody(e.target.value)}
                     placeholder="Add new to-do task"
                     value={newBody}
+                    onKeyDown={handleEnter}
                 />
                 <label> Due date: </label>
                 <input 
                     type="date"
                     value={newDate}
                     onChange={(e)=>setNewDate(e.target.value)}
+                    onKeyDown={handleEnter}
                 />
                 <div className="add-button">
                     <FaPlusSquare 

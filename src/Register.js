@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-const Register = ({ email, setEmail, password, setPassword, loginUser }) => {
-    const URL = `http://localhost:8080/to-do-list/register`;
-    const URLlogin = `http://localhost:8080/to-do-list/login`;
+const Register = ({ URL, email, setEmail, password, setPassword, loginUser }) => {
+    const registerURL = `${URL}/register`;
+    const loginURL = `${URL}/login`;
 
     const [username, setUsername] = useState('');
     const [uName, setUName] = useState('');
@@ -20,11 +20,11 @@ const Register = ({ email, setEmail, password, setPassword, loginUser }) => {
           }
         console.log({email: email, password: password, username: username, name: uName});
         
-        fetch(URL, registerOptions)
+        fetch(registerURL, registerOptions)
         .then(res => res.json().then(async result => {
             
             if (result.message) {
-                loginUser(URLlogin, email, password);
+                loginUser(loginURL, email, password);
             } else {
                 // logic here to show the user wrong credentials
             }}))
@@ -45,6 +45,7 @@ const Register = ({ email, setEmail, password, setPassword, loginUser }) => {
                             required
                             value={username}
                             onChange={(e)=>setUsername(e.target.value)}
+                            maxLength={8}
                             />
                         <label htmlFor="name">
                             Name:

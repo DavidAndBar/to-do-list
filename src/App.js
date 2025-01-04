@@ -12,7 +12,6 @@ import Register from './Register';
 import loginUser from './functions/loginUser';
 
 function App() {
-  const URL = "http://localhost:3500/davidLists";
   const COOKIE = document.cookie;
   const [lists, setLists] = useState('');
   const [activeList, setActiveList] = useState('');
@@ -20,9 +19,11 @@ function App() {
   const [username, setUsername] = useState(COOKIE.slice(COOKIE.indexOf("; ")+11))
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const URL = `http://localhost:8080/to-do-list`;
+  const userURL = `${URL}/${username}`;
 
   const verifyToken = () => {
-    const uri = `http://localhost:8080/to-do-list/check-token`;
+    const uri = `${URL}/check-token`;
     
     const tokenOptions = {
       method: "POST",
@@ -44,11 +45,16 @@ function App() {
   }
 
   const fetchLists = async () => {
-    const response = await fetch(URL);
-    const listsRetrieved = await response.json();
-    setLists(listsRetrieved);
-    setActiveList(listsRetrieved[0])
-    return listsRetrieved;
+    if (!!username) {
+      const response = await fetch(userURL).then(res => {
+        res.json().then(result => {
+          setLists(result.lists);
+          setActiveList(result.lists[0])
+          return result.lists;
+        })
+      }).catch(error => console.log(error));
+    }
+    
   }
 
 /* Fetch the initial data */
@@ -60,15 +66,25 @@ function App() {
   useEffect( () => {
     const updateLists = () => {
             const updateOptions = {
-              method: "PATCH",
+              method: "PUT",
               headers: {
                 "Content-Type": "application/json"
               },
               body: JSON.stringify(activeList)
             }
-            const updateURL = `${URL}/${activeList.id}`
+            const updateURL = `${userURL}/${activeList.id}`
             apiRequest(updateURL, updateOptions)
           }
+
+    const retrieveLists = async () =>{
+      const response = await fetch(userURL).then(res => {
+        res.json().then(result => {
+          setLists(result.lists);
+        })
+      }).catch(error => console.log(error));
+    }
+    
+    
 
     if (!!lists) {
       const newList = lists.map( (list) => {
@@ -78,10 +94,13 @@ function App() {
           return list;
         }
       })
+      
       setLists(newList);
       updateLists();
+      retrieveLists();
     }
   },[activeList] )
+
 
   return (
     <div className="App">
@@ -90,7 +109,7 @@ function App() {
         {
           !!isAuth ?  <>
                       <Route exact path="/" element={<MainContent activeList={activeList} setActiveList={setActiveList}/>}></Route>
-                      <Route exact path="/newList" element={<MainCreateNewList url={URL} fetchLists={fetchLists} setActiveList={setActiveList}/>}></Route>
+                      <Route exact path="/newList" element={<MainCreateNewList url={userURL} lists={lists} setActiveList={setActiveList}/>}></Route>
                       <Route exact path="/options" element={<MainOptions activeList={activeList} setActiveList={setActiveList} lists={lists}/>}></Route>
                       <Route exact path="/createNewItem" element={<MainCreateNewItem activeList={activeList} setActiveList={setActiveList}/> }></Route>
                       <Route path="*" element={<NotFound />}></Route>

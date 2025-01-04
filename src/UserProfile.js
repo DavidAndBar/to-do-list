@@ -13,7 +13,7 @@ const UserProfile = ({ isAuth, username }) => {
   return (
     <div className="user-profile">
       <div className="profile-icon profile-mobile">
-        <Link to="/createNewItem">
+        <Link to="/">
                   <FaUserCircle 
                       role="button"
                   />

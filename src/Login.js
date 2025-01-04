@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-const Login = ({ email, setEmail, password, setPassword, loginUser}) => {
-    const URL = `http://localhost:8080/to-do-list/login`;
+const Login = ({ URL, email, setEmail, password, setPassword, loginUser}) => {
+    const loginURL = `${URL}/login`;
     
     const handleLogin = (e) =>{
         e.preventDefault();
-        loginUser(URL,email, password);
+        loginUser(loginURL,email, password);
     }
 
   
