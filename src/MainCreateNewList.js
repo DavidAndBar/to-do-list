@@ -9,6 +9,7 @@ const MainCreateNewList = ({ url, lists, setActiveList }) => {
     const navigate = useNavigate();
 
     const handleAddList = async () => {
+        document.getElementById("btn-add-list").disabled = true;
         if (!!listName) {            
             const listsNow = lists;
             /* Checks what id's are taken */
@@ -59,7 +60,7 @@ const MainCreateNewList = ({ url, lists, setActiveList }) => {
                     onChange={(e) => setListName(e.target.value)}
                 />
                 <div>
-                    <Link ><button type="button" className="btn-add-list" onClick={handleAddList}>Add new list</button></Link>
+                    <Link ><button type="button" className="btn-add-list" onClick={handleAddList} id="btn-add-list" >Add new list</button></Link>
                     <Link to="/"><button type="button" className="btn-cancel">Cancel</button></Link>
                 </div>
             </div>

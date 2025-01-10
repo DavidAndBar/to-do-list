@@ -10,6 +10,7 @@ import Login from './Login';
 import NotFound from './NotFound';
 import Register from './Register';
 import loginUser from './functions/loginUser';
+import deleteLoadingEffect from './functions/deleteLoadingEffect';
 
 function App() {
   const COOKIE = document.cookie;
@@ -19,7 +20,7 @@ function App() {
   const [username, setUsername] = useState(COOKIE.slice(COOKIE.indexOf("; ")+11))
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const URL = `http://localhost:8080/to-do-list`;
+  const URL = "http://localhost:8080/to-do-list";//`https://tdl-react.azurewebsites.net/to-do-list`;
   const userURL = `${URL}/${username}`;
 
   const verifyToken = () => {
@@ -77,7 +78,7 @@ function App() {
           }
 
     const retrieveLists = async () =>{
-      const response = await fetch(userURL).then(res => {
+      await fetch(userURL).then(res => {
         res.json().then(result => {
           setLists(result.lists);
         })
@@ -101,27 +102,29 @@ function App() {
     }
   },[activeList] )
 
-
+  setTimeout(deleteLoadingEffect, 1500)
   return (
     <div className="App">
-      <Nav isAuth={isAuth} activeList={activeList} setActiveList={setActiveList} lists={lists} username={username}/>
-      <Routes>
-        {
-          !!isAuth ?  <>
-                      <Route exact path="/" element={<MainContent activeList={activeList} setActiveList={setActiveList}/>}></Route>
-                      <Route exact path="/newList" element={<MainCreateNewList url={userURL} lists={lists} setActiveList={setActiveList}/>}></Route>
-                      <Route exact path="/options" element={<MainOptions activeList={activeList} setActiveList={setActiveList} lists={lists}/>}></Route>
-                      <Route exact path="/createNewItem" element={<MainCreateNewItem activeList={activeList} setActiveList={setActiveList}/> }></Route>
-                      <Route path="*" element={<NotFound />}></Route>
-                    </> :
-                    <>
-                      <Route exact path="/" element={<Login URL={URL} email={email} setEmail={setEmail} password={password} setPassword={setPassword} loginUser={loginUser}/>}></Route>
-                      <Route exact path="/register" element={<Register URL={URL} email={email} setEmail={setEmail} password={password} setPassword={setPassword} loginUser={loginUser}/>}></Route>
-                      <Route path="*" element={<NotFound />}></Route>
-                    </>
-        }
-        
-      </Routes>
+      <Nav URL={URL} isAuth={isAuth} activeList={activeList} setActiveList={setActiveList} lists={lists} setLists={setLists} username={username}/>
+      <div id="loader-div"><div id="loader"></div></div>
+      <div id="main-content">
+        <Routes>
+          {
+            !!isAuth ?  <>
+                        <Route exact path="/" element={<MainContent activeList={activeList} setActiveList={setActiveList}/>}></Route>
+                        <Route exact path="/newList" element={<MainCreateNewList url={userURL} lists={lists} setActiveList={setActiveList}/>}></Route>
+                        <Route exact path="/options" element={<MainOptions activeList={activeList} setActiveList={setActiveList} lists={lists}/>}></Route>
+                        <Route exact path="/createNewItem" element={<MainCreateNewItem activeList={activeList} setActiveList={setActiveList}/> }></Route>
+                        <Route path="*" element={<NotFound />}></Route>
+                      </> :
+                      <>
+                        <Route exact path="/" element={<Login URL={URL} email={email} setEmail={setEmail} password={password} setPassword={setPassword} loginUser={loginUser}/>}></Route>
+                        <Route exact path="/register" element={<Register URL={URL} email={email} setEmail={setEmail} password={password} setPassword={setPassword} loginUser={loginUser}/>}></Route>
+                        <Route path="*" element={<NotFound />}></Route>
+                      </>
+          }
+        </Routes>
+      </div>
     </div>
   );
 }
