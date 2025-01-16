@@ -20,7 +20,7 @@ function App() {
   const [username, setUsername] = useState(COOKIE.slice(COOKIE.indexOf("; ")+11))
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const URL = "http://localhost:8080/to-do-list";//`https://tdl-react.azurewebsites.net/to-do-list`;
+  const URL = `https://tdl-react.azurewebsites.net/to-do-list`;
   const userURL = `${URL}/${username}`;
 
   const verifyToken = () => {
