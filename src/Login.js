@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = ({ URL, email, setEmail, password, setPassword, loginUser}) => {
     const loginURL = `${URL}/login`;
@@ -35,7 +36,7 @@ const Login = ({ URL, email, setEmail, password, setPassword, loginUser}) => {
                         required
                     />
                     <button type="submit"> Login </button>
-                    <p>Don't have an account? Sign up <a href="/register">here</a></p>
+                    <p>Don't have an account? Sign up <Link to="/register">here</Link></p>
                 </form>
             </div>
         </main>

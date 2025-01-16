@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Register = ({ URL, email, setEmail, password, setPassword, loginUser }) => {
     const registerURL = `${URL}/register`;
@@ -88,7 +89,7 @@ const Register = ({ URL, email, setEmail, password, setPassword, loginUser }) =>
                             required
                         />
                         <button type="submit"> Login </button>
-                        <p>Already have an account? Sign up <a href="/">here</a></p>
+                        <p>Already have an account? Sign up <Link to="/">here</Link></p>
                     </form>
                 </div>
             </main>
