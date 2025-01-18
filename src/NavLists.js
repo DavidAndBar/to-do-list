@@ -9,7 +9,7 @@ const NavLists = ( { activeList, setActiveList, lists } ) => {
   return (
     <div className="select-active-list">
       <SelectActiveList activeList={activeList} setActiveList={setActiveList} lists={lists}/>
-      <div className="opts-wrapper">
+      <div className="opts-wrapper icon-button">
         <Link to="/options">
           <FaThLarge 
             role="button"

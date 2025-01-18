@@ -56,14 +56,16 @@ const CreateNewItem = ( { activeList, setActiveList } ) => {
                     value={newBody}
                     onKeyDown={handleEnter}
                 />
-                <label> Due date: </label>
-                <input 
-                    type="date"
-                    value={newDate}
-                    onChange={(e)=>setNewDate(e.target.value)}
-                    onKeyDown={handleEnter}
-                />
-                <div className="add-button">
+                <div className="due-date-div">
+                    <label> Due date: </label>
+                    <input 
+                        type="date"
+                        value={newDate}
+                        onChange={(e)=>setNewDate(e.target.value)}
+                        onKeyDown={handleEnter}
+                    />
+                </div>
+                <div className="add-button icon-button">
                     <FaPlusSquare 
                         role="button"
                         onClick={pushItem}

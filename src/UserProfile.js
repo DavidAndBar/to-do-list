@@ -12,7 +12,7 @@ const UserProfile = ({ isAuth, username }) => {
   
   return (
     <div className="user-profile">
-      <div className="profile-icon profile-mobile">
+      <div className="profile-icon profile-mobile icon-button">
         <Link to="/">
                   <FaUserCircle 
                       role="button"

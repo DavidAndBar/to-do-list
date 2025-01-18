@@ -56,10 +56,10 @@ const Task = ({ activeList, setActiveList, item, columnCompleted }) => {
                       {item.name}
                       {item.dueDate ? <span> - {item.dueDate}</span> : <></>}
                     </p>}
-      <div className="edit-button">
+      <div className="edit-button icon-button">
         {!!!columnCompleted && <FaEdit role='button' onClick={handleEdit}/>}
       </div>
-      <div className="delete-button">
+      <div className="delete-button icon-button">
         <FaTrashAlt 
           role='button' 
           onClick={updateDeleted}

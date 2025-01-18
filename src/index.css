@@ -34,6 +34,14 @@ code {
   animation: spin 2s linear infinite;
 }
 
+#loader-div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 1.5rem*2 - 48px - 10px*2);
+  width: 100%;
+}
+
 /* Safari */
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
@@ -191,6 +199,7 @@ main {
 
 .new-task-div {
   display: flex;
+  align-items: center;
   height: 48px;
   justify-content: center;
   margin-top: 0.6rem;
@@ -214,6 +223,12 @@ main {
 
 .new-task-div input {
   height: 70%;
+}
+
+.due-date-div {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .search-item {
@@ -415,13 +430,8 @@ main > .new-list {
 /* General */
 
 /* -Icons- */
-:where(.delete-button, .edit-button, .opts-wrapper > a, .add-items-wrapper > a, .profile-icon > a) > svg{
+:where(.delete-button, .edit-button, .opts-wrapper > a, .add-items-wrapper > a, .profile-icon > a, .add-button > a, .add-button) > svg{
   height: 48px;
-  width: 48px;
-}
-
-.add-button > a > svg, .add-button > svg  {
-  height: 100%;
   width: 48px;
 }
 
@@ -442,6 +452,13 @@ svg {
   cursor: grab;
 }
 
+.icon-button {
+  align-items: center;
+}
+
+.search {
+  display: none;
+}
 
 /* Responsive design */
 
@@ -452,7 +469,7 @@ svg {
   }
 
   .opts-wrapper{
-    display: block;
+    display: flex;
   }
 
   /* List of tasks */
@@ -474,12 +491,14 @@ svg {
 
 @media screen and (max-width:700px){
   /* nav */
-  main > form > .create-new-item {
+  .due-date-div {
     display: none!important;
   }
 
+
+
   .add-items-wrapper{
-    display: block;
+    display: flex;
   }
 
   .search-item {
@@ -493,5 +512,19 @@ svg {
 
   .user-profile > p {
     margin: 0;
+  }
+}
+
+@media screen and (max-width: 500px){
+  svg {
+    width: 30px;
+    height: 30px;
+  }
+  .search-item {
+    display: none;
+  }
+
+  .search {
+    display: block;
   }
 }
